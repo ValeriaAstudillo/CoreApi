@@ -31,7 +31,7 @@ namespace WebApiAspNetCore
         {
             // Add framework services.
             services.AddMvc();
-            services.AddCors();
+            //services.AddCors();
             var connection = Configuration.GetConnectionString("DatabaseConnection");
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
         }
@@ -39,7 +39,7 @@ namespace WebApiAspNetCore
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseCors(b => b.WithOrigins("http://localhost:64795").AllowAnyHeader().AllowAnyMethod());
+            //app.UseCors(b => b.WithOrigins("http://localhost:64795").AllowAnyHeader().AllowAnyMethod());
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
