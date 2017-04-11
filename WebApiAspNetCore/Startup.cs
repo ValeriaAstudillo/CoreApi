@@ -31,7 +31,7 @@ namespace WebApiAspNetCore
         {
             // Add framework services.
             services.AddMvc();
-            //services.AddCors();
+            services.AddCors();
             var connection = Configuration.GetConnectionString("DatabaseConnection");
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
         }
@@ -40,6 +40,7 @@ namespace WebApiAspNetCore
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             //app.UseCors(b => b.WithOrigins("http://localhost:64795").AllowAnyHeader().AllowAnyMethod());
+            app.UseCors(b => b.AllowAnyHeader().AllowAnyMethod());
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
