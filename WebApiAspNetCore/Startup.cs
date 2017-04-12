@@ -40,6 +40,7 @@ namespace WebApiAspNetCore
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             //app.UseCors(b => b.WithOrigins("http://localhost:64795").AllowAnyHeader().AllowAnyMethod());
+            //Enable Cors
             app.UseCors(b => b.AllowAnyHeader().AllowAnyMethod());
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
